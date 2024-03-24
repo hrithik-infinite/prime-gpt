@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import login_bg from "../assets/login-bg.jpeg";
 import prime_logo from "../assets/prime-logo.svg";
 import { z } from "zod";
@@ -10,13 +10,19 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { Input } from "../../components/ui/input";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../utils/firebase";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
+import useAuthChecker from "../hooks/useAuthChecker";
 const formSchema = z.object({
   username: z.string().min(2).max(20),
   password: z.string().min(2).max(10),
 });
 
 const Login = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [isSignInForm, setIsSignInForm] = useState(true);
+  useAuthChecker();
   const toggleSignUpForm = () => {
     setIsSignInForm(!isSignInForm);
   };
@@ -32,12 +38,35 @@ const Login = () => {
       createUserWithEmailAndPassword(auth, values.username, values.password).then((userCredential) => {
         const user = userCredential.user;
         console.log(userCredential);
-        //   updateProfile(user, {
-        //     displayName: name,
-        //     photoURL:
-        //       "https://fastly.picsum.photos/id/942/200/200.jpg?hmac=Gh7W-H3ZGmweB9STLwQvq-IHkxrVyawHVTKYxy-u9mA",
-        //   })
+        updateProfile(user, {
+          displayName: values.username,
+          photoURL: "https://fastly.picsum.photos/id/942/200/200.jpg?hmac=Gh7W-H3ZGmweB9STLwQvq-IHkxrVyawHVTKYxy-u9mA",
+        })
+          .then(() => {
+            const { uid, email, displayName, photoURL } = auth.currentUser;
+            dispatch(
+              addUser({
+                uid: uid,
+                email: email,
+                displayName: displayName,
+                photoURL: photoURL,
+              })
+            );
+            navigate("/browse");
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       });
+    } else {
+      signInWithEmailAndPassword(auth, values.username, values.password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          navigate("/browse");
+        })
+        .catch((error) => {
+          setErrorMsg(error.message);
+        });
     }
   };
   return (
