@@ -1,10 +1,13 @@
 import Banner from "../components/Banner";
 import { bannerContent, cardImgUrls } from "../utils/constants";
+import FIRE_STICK_BANNER from "../assets/firestick-bg.jpeg";
+import { Button } from "@/components/ui/button";
+import Footer from "../common/Footer";
 
 const LandingPage = () => {
   return (
     <>
-      <div >
+      <div>
         {bannerContent?.map((item) => (
           <Banner {...item} key={item.title} />
         ))}
@@ -21,6 +24,23 @@ const LandingPage = () => {
             </div>
           ))}
         </div>
+      </div>
+      <div
+        className="text-white pb-[40%] pt-[1%] px-10 flex md:block flex-col md:flex-row"
+        style={{
+          background: `url(${FIRE_STICK_BANNER}) no-repeat center center/cover`,
+        }}>
+        <div className="md:w-[50%] float-end">
+          <div className="text-5xl py-10 font-thin">Even better with Fire TV Stick</div>
+          <div className="text-2xl font-thin text-gray-200">
+            The biggest movies and TV shows are always better on a big screen. Simply plug in your Amazon Fire TV Stick and stream on any HDTV. Press the voice button on the remote and say the name of the title you want to watch to find it in
+            seconds.
+          </div>
+          <Button className="my-5 bg-sky-700 text-md px-20 py-6 hover:bg-sky-600">Get started</Button>
+        </div>
+      </div>
+      <div className=" bg-neutral-800 ">
+        <Footer />
       </div>
     </>
   );
