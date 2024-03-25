@@ -25,7 +25,7 @@ const useAuthChecker = () => {
       } else {
         // User is signed out -- login sould be accesible
         dispatch(removeUser());
-        if (!(currentRoute === "/login")) navigate("/login");
+        if (!(currentRoute === "/login")) navigate("/");
       }
     });
 

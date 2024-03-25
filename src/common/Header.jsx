@@ -13,7 +13,7 @@ const Header = () => {
   const [hideNav, setHideNav] = useState(true);
   useAuthChecker();
   return (
-    <nav className="bg-slate-950 py-2 sticky top-3 w-[85%] mx-auto rounded-lg z-50">
+    <nav className="bg-slate-950 py-2 sticky  w-full mx-auto rounded-lg z-50">
       <div className="flex justify-center pe-32 flex-col md:flex-row">
         <div className="w-full mx-[10%] mb-4 md:mx-0 md:my-1 md:w-40 flex">
           <AlignJustify color="#fff" width={50} className="md:hidden mr-3 cursor-pointer" onClick={() => setHideNav(!hideNav)} />
