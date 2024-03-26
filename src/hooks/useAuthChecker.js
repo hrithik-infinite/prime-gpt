@@ -11,9 +11,7 @@ const useAuthChecker = () => {
 
   useEffect(() => {
     const unsubscribeEL = onAuthStateChanged(auth, (user) => {
-      console.log(user);
       if (user) {
-        //user signed in
         const { uid, email, displayName } = user;
         dispatch(
           addUser({
@@ -24,7 +22,6 @@ const useAuthChecker = () => {
         );
         if (currentRoute === "/login" || currentRoute === "/") navigate("/browse");
       } else {
-        // User is signed out -- login sould be accesible
         dispatch(removeUser());
         if (!(currentRoute === "/login")) navigate("/");
       }
