@@ -43,3 +43,7 @@ export const API_OPTIONS = {
     Authorization: `Bearer ${import.meta.env.VITE_TMDB_KEY}`,
   },
 };
+export const TMDB_MOVIE_POSTER = "https://image.tmdb.org/t/p/original";
+export const TMDB_URL = "https://api.themoviedb.org/3/movie/";
+export const TRAILER_CONFIG = "/videos?language=en-US";
+export const TMDB_MOVIE_IMAGES = "/images";

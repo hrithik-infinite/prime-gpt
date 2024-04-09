@@ -33,10 +33,10 @@ const MainContainer = () => {
           {trailerMovies?.map((movie, index) => {
             const { adult, title, original_language, vote_average, id, backdrop_path, description } = movie;
             return (
-              <CarouselItem key={id}>
+              <CarouselItem key={movie.id}>
                 <div className={`ml-5 ${current !== index && "opacity-30"}`}>
-                  <VideoTitle movie={movie} />
-                  <VideoBackground />
+                  <VideoTitle movieId={id} title={title} language={original_language} isAdult={adult} rating={vote_average} thumbnail={backdrop_path} currentIndex={current} />
+                  <VideoBackground movieId={id} currentIndex={current} videoIndex={index} description={description} />
                 </div>
               </CarouselItem>
             );
