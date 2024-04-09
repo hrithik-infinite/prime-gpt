@@ -34,10 +34,8 @@ const Login = () => {
   });
   const onSubmit = (values) => {
     if (!isSignInForm) {
-      console.log(values);
       createUserWithEmailAndPassword(auth, values.username, values.password).then((userCredential) => {
         const user = userCredential.user;
-        console.log(userCredential);
         updateProfile(user, {
           displayName: values.username,
           photoURL: "https://fastly.picsum.photos/id/942/200/200.jpg?hmac=Gh7W-H3ZGmweB9STLwQvq-IHkxrVyawHVTKYxy-u9mA",
