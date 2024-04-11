@@ -9,7 +9,7 @@ import VideoBackground from "../components/VideoBackground";
 import { Circle } from "lucide-react";
 
 const MainContainer = () => {
-  const [api, setApi] = useState();
+  const [api, setApi] = useState(null);
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
 
@@ -19,16 +19,25 @@ const MainContainer = () => {
       return;
     }
 
+    const handleSelect = () => {
+      setCurrent(api.selectedScrollSnap());
+    };
+
     setCount(api.scrollSnapList().length);
     setCurrent(api.selectedScrollSnap());
+    api.on("select", handleSelect);
 
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap());
-    });
+    return () => {
+      api.off("select", handleSelect);
+    };
   }, [api]);
+
   const movies = useSelector((store) => store.movies?.nowPlayingMovies || []);
   const trailerMovies = movies[0]?.slice(0, 6);
-  if (!movies.length) return <Skeleton className="h-96 w-[90vw] rounded-xl mx-auto mt-3" />;
+
+  if (!movies.length) {
+    return <Skeleton className="h-96 w-[90vw] rounded-xl mx-auto mt-3" />;
+  }
 
   return (
     <div className="text-white px-4 mx-auto w-[95%] mt-5">
