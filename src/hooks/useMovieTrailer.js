@@ -8,7 +8,6 @@ const useMovieTrailer = (movieId, description) => {
   if (!movieId) return;
   const dispatch = useDispatch();
   const getMovieTrailer = async () => {
-    console.log("yoyoyoyo")
     try {
       const data = await fetch(TMDB_URL + movieId + TRAILER_CONFIG, API_OPTIONS);
       const json = await data.json();

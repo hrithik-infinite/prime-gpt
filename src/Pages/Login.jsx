@@ -30,6 +30,7 @@ const Login = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       username: "",
+      password : ""
     },
   });
   const onSubmit = (values) => {
