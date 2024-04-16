@@ -5,8 +5,10 @@ import Header from "./Header";
 const Layout = () => {
   return (
     <>
-      <Header />
-      <Outlet />
+      <div className="bg-slate-950">
+        <Header />
+        <Outlet />
+      </div>
     </>
   );
 };

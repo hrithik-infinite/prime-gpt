@@ -5,7 +5,7 @@ import SecondaryContainer from "./SecondaryContainer";
 
 const Browse = () => {
   return (
-    <div className="bg-slate-950">
+    <div>
       <MainContainer />
       <SecondaryContainer />
       <Footer />
