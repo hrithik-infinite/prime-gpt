@@ -7,6 +7,7 @@ import Autoplay from "embla-carousel-autoplay";
 import VideoTitle from "../components/VideoTitle";
 import VideoBackground from "../components/VideoBackground";
 import { Circle } from "lucide-react";
+import useLatestMovies from "../hooks/useLatestMovies";
 
 const MainContainer = () => {
   const [api, setApi] = useState(null);
@@ -14,6 +15,7 @@ const MainContainer = () => {
   const [count, setCount] = useState(0);
 
   useNowPlayingMovies();
+  useLatestMovies();
   useEffect(() => {
     if (!api) {
       return;
