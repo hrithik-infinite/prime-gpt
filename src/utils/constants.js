@@ -47,3 +47,7 @@ export const TMDB_MOVIE_POSTER = "https://image.tmdb.org/t/p/original";
 export const TMDB_URL = "https://api.themoviedb.org/3/movie/";
 export const TRAILER_CONFIG = "/videos?language=en-US";
 export const TMDB_MOVIE_IMAGES = "/images";
+export const TMDB_MOVIE_LATEST = "popular?page=1";
+export const TMDB_MOVIE_TOP_RATED = "top_rated?page=1";
+export const TMDB_MOVIE_UPCOMING = "upcoming?page=1";
+export const TMDB_MOVIE_HORROR = "&with_genres=27";
