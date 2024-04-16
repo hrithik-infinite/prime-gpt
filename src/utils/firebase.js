@@ -14,7 +14,6 @@ const firebaseConfig = {
   storageBucket: "prime-gpt-a0ba8.appspot.com",
   messagingSenderId: "419135239058",
   appId: "1:419135239058:web:aae7c49bc7e71dccbd074b",
-  measurementId: "G-Z0CT5R0PKH",
 };
 
 // Initialize Firebase
