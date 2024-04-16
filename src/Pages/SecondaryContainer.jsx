@@ -1,11 +1,15 @@
-import React from 'react'
-import useLatestMovies from '../hooks/useLatestMovies'
+import React from "react";
+import useLatestMovies from "../hooks/useLatestMovies";
+import useTopRated from "../hooks/useTopRated";
+import useUpcoming from "../hooks/useUpcoming";
+import useHorror from "../hooks/useHorror";
 
 const SecondaryContainer = () => {
   useLatestMovies();
-  return (
-    <div>SecondaryContainer</div>
-  )
-}
+  useTopRated();
+  useUpcoming();
+  useHorror();
+  return <div>SecondaryContainer</div>;
+};
 
-export default SecondaryContainer
+export default SecondaryContainer;

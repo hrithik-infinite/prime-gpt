@@ -1,14 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
-import { API_OPTIONS, TMDB_MOVIE_LATEST, TMDB_URL, TMDB_MOVIE_IMAGES } from "../utils/constants";
-import { addLatestMovies } from "../utils/moviesSlice";
+import { API_OPTIONS, TMDB_MOVIE_UPCOMING, TMDB_URL, TMDB_MOVIE_IMAGES } from "../utils/constants";
+import { addUpcomingMovies } from "../utils/moviesSlice";
 import { useEffect } from "react";
-
-const useLatestMovies = () => {
+const useUpcoming = () => {
   const dispatch = useDispatch();
-  const latestMovies = useSelector((store) => store.movie?.latestMovies);
-  const getLatestMovies = async () => {
+  const upcomingMovies = useSelector((store) => store.movie?.upcomingMovies);
+  const getUpcomingMovies = async () => {
     try {
-      const data = await fetch(TMDB_URL + TMDB_MOVIE_LATEST, API_OPTIONS);
+      const data = await fetch(TMDB_URL + TMDB_MOVIE_UPCOMING, API_OPTIONS);
       const json = await data.json();
       for (const movie of json.results) {
         try {
@@ -20,7 +19,7 @@ const useLatestMovies = () => {
             ...movie,
             movie_logo: logo_key,
           };
-          dispatch(addLatestMovies(trailerwithMovieId));
+          dispatch(addUpcomingMovies(trailerwithMovieId));
         } catch (error) {
           console.error("Error fetching movie logo:", error);
         }
@@ -30,8 +29,8 @@ const useLatestMovies = () => {
     }
   };
   useEffect(() => {
-    if (!latestMovies?.length) getLatestMovies();
+    if (!upcomingMovies?.length) getUpcomingMovies();
   }, []);
 };
 
-export default useLatestMovies;
+export default useUpcoming;

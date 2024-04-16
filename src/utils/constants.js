@@ -51,3 +51,4 @@ export const TMDB_MOVIE_LATEST = "popular?page=1";
 export const TMDB_MOVIE_TOP_RATED = "top_rated?page=1";
 export const TMDB_MOVIE_UPCOMING = "upcoming?page=1";
 export const TMDB_MOVIE_HORROR = "&with_genres=27";
+export const TMDB_DISCOVER_URL = "https://api.themoviedb.org/3/discover/movie?";
