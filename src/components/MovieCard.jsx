@@ -12,22 +12,17 @@ const MovieCard = ({ posterPath, title, logo, description, isAdult, releaseDate,
   useMovieTrailer(movieId, description);
   return (
     <div onMouseOver={() => setShowInfo(index)} onMouseLeave={() => setShowInfo(-1)} className={`transition-transform transform relative hover:scale-125 hover:zoom-in-150 ${showInfo === index && "z-40"}`}>
-      <div className="w-30 md:w-60 cursor-pointer relative">
+      <div className="w-32 md:w-80 cursor-pointer relative">
         {showInfo !== index ? (
           <img src={posterPath ? TMDB_MOVIE_POSTER + posterPath : movie_bg} alt="movie-card" className={`rounded-lg ${index === showInfo ? "rounded-t-lg rounded-b-none" : "rounded-lg"}`} />
         ) : (
-          <iframe
-            className="relative z-50 w-full aspect-auto zoom-in-150 scale-y-150"
-            src={"https://www.youtube.com/embed/" + trailer?.[movieId]?.key + "?showinfo=0&autoplay=1&mute=1&controls=0&loop=1&rel=0&autohide=1&start=10"}
-            title="video"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
-            loading="lazy"></iframe>
+          <img src={posterPath ? TMDB_MOVIE_POSTER + posterPath : movie_bg} alt="movie-card" className={`rounded-lg ${index === showInfo ? "rounded-t-lg rounded-b-none" : "rounded-lg"} relative z-50 w-full aspect-auto zoom-in-110 scale-y-110`} />
         )}
         <div className="text-gray-200 text-center text-sm md:text-lg font-mono absolute bottom-3 right-2">{logo ? <img src={TMDB_MOVIE_POSTER + logo} alt={title} className="w-28" /> : <span>{title}</span>}</div>
       </div>
       <Link className={`absolute z-50`} to={`/browse/${movieId}`}>
         {index === showInfo && (
-          <div className="px-5 py-5 shadow-lg bg-black w-60">
+          <div className="px-5 py-5 shadow-lg bg-black w-80 ">
             <div className="text-white">
               {trailer?.[movieId]?.key ? (
                 <span className="flex text-xs md:text-lg">
