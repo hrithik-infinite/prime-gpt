@@ -40,7 +40,7 @@ const MainContainer = () => {
   }
 
   return (
-    <div className="text-white px-4 mx-auto w-[95%] mt-5">
+    <div className="text-white px-4 mx-auto w-full mt-5 ">
       <Carousel
         className="w-full"
         plugins={[
@@ -63,8 +63,8 @@ const MainContainer = () => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+        <CarouselPrevious className="absolute top-1/2 left-2 transform -translate-y-1/2" />
+        <CarouselNext className="absolute top-1/2 right-2 transform -translate-y-1/2" />
       </Carousel>
       <div className="py-5 text-center flex justify-center text-sm text-muted-foreground gap-4">
         {trailerMovies.map((_, index) => (index === current ? <Circle size={10} fill="#ffffff" key={index} /> : <Circle size={10} fill="#808080" color="#808080" key={index} />))}
