@@ -9,7 +9,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 
 const MovieCard = ({ posterPath, title, logo, description, isAdult, releaseDate, setShowInfo, showInfo, index, movieId }) => {
   const trailer = useSelector((store) => store.movies?.trailerVideo);
-  // useMovieTrailer(trailer, description);
+  useMovieTrailer(movieId, description);
   return (
     <div onMouseOver={() => setShowInfo(index)} onMouseLeave={() => setShowInfo(-1)} className={`transition-transform transform relative hover:scale-125 hover:zoom-in-150 ${showInfo === index && "z-40"}`}>
       <div className="w-30 md:w-60 cursor-pointer relative">
