@@ -1,4 +1,3 @@
-// useMovieTrailer.js
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { API_OPTIONS, TMDB_URL, TRAILER_CONFIG, TMDB_MOVIE_IMAGES } from "../utils/constants";
@@ -32,7 +31,7 @@ const useMovieTrailer = (movieId, description) => {
       }
     };
     getMovieTrailer();
-  }, [dispatch, movieId, movieTrailer, description]); // Add dependencies to useEffect
+  }, [dispatch, movieId, movieTrailer, description]);
 };
 
 export default useMovieTrailer;
