@@ -1,26 +1,51 @@
 import { createBrowserRouter } from "react-router-dom";
-import LandingPage from "../Pages/LandingPage";
-import Login from "../Pages/Login";
-import Browse from "../Pages/Browse";
+import { Suspense, lazy } from "react";
 import Layout from "../common/Layout";
 import ErrorPage from "../Pages/ErrorPage";
+import Shimmer from "../components/Shimmer";
+
+const Login = lazy(() => import("../Pages/Login"));
+const LandingPage = lazy(() => import("../Pages/LandingPage"));
+const Browse = lazy(() => import("../Pages/Browse"));
+const MoviePlayer = lazy(() => import("../Pages/MoviePlayer"));
 export const approuter = createBrowserRouter([
   {
     path: "login",
-    element: <Login />,
+    element: (
+      <Suspense fallback={<Shimmer />}>
+        <Login />
+      </Suspense>
+    ),
   },
   {
     path: "/",
     element: <Layout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
-        element: <LandingPage />,
+        element: (
+          <Suspense fallback={<Shimmer />}>
+            <LandingPage />
+          </Suspense>
+        ),
       },
       {
         path: "browse",
         errorElement: <ErrorPage />,
-        element: <Browse />,
+        element: (
+          <Suspense fallback={<Shimmer />}>
+            <Browse />
+          </Suspense>
+        ),
+      },
+      {
+        path: "browse/:id",
+        element: (
+          <Suspense fallback={<Shimmer />}>
+            <MoviePlayer />
+          </Suspense>
+        ),
       },
     ],
   },
