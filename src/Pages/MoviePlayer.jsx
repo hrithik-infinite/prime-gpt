@@ -12,7 +12,7 @@ const MoviePlayer = () => {
         <MovieDetails />
       </div>
       <div className="-mt-5 text-center z-20 text-white">
-        <Tabs>
+        <Tabs defaultValue="related">
           <TabsList>
             <TabsTrigger value="related">Related</TabsTrigger>
             <TabsTrigger value="details">Details</TabsTrigger>
