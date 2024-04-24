@@ -1,9 +1,16 @@
-import React from 'react'
+import React from "react";
+import useRecommendation from "../hooks/useRecommendation";
+import MovieList from "./MovieList";
 
 const RecommendedMovies = () => {
-  return (
-    <div>RecommendedMovies</div>
-  )
-}
+  const recomendedMovies = useRecommendation();
+  if (!recomendedMovies) return null;
 
-export default RecommendedMovies
+  return (
+    <div>
+      <MovieList movies={recomendedMovies} count={recomendedMovies.length} />
+    </div>
+  );
+};
+
+export default RecommendedMovies;
