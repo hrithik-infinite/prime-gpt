@@ -14,13 +14,13 @@ const MovieDetails = () => {
   if (!movieData) return null;
 
   const { title, overview, vote_average: rating, original_language: language, adult: isAdult, backdrop_path: thumbnail } = movieData;
-  const movieLogo = movieData?.movie_logo ? <img src={TMDB_MOVIE_POSTER + movieData?.movie_logo} alt={title} className="w-10 md:w-72 md:max-h-[120px] lg:max-w-[80%]" /> : <div className="text-white w-20 md:w-72 text-xs md:text-6xl">{title}</div>;
+  const movieLogo = movieData?.movie_logo ? <img src={TMDB_MOVIE_POSTER + movieData?.movie_logo} alt={title} className="w-10 md:w-72 md:max-h-[120px] lg:max-w-[80%]" /> : <div className="text-white w-20 md:w-72 text-xs md:text-4xl">{title}</div>;
 
   const backgroundImage = TMDB_MOVIE_POSTER + thumbnail;
 
   return (
     <div
-      className="px-20 py-4 md:py-32 absolute bg-gradient-to-r from-black from-10% w-full aspect-video z-10 text-white h-full"
+      className="px-20 pt-4 md:pt-32 absolute bg-gradient-to-r from-black from-10% w-full aspect-video z-10 text-white h-[85vh]"
       style={{
         background: `linear-gradient(to right, black ${backgroundImage ? "10%" : "20%"}, transparent), url(${backgroundImage}) no-repeat center center/cover`,
       }}>
@@ -33,9 +33,9 @@ const MovieDetails = () => {
           <Star color="#f4d50b" fill="#f4d50b" strokeWidth={3} className="md:mt-[2px] -mt-1 w-2 md:w-4" />
         </div>
         <div className="max-w-fit">
-          <h1 className="text-6xl mt-5 py-2 rounded-lg mb-1 bg-gradient-to-r from-transparent via-sky-600 to-transparent">{movieLogo}</h1>
+          <div className="text-3xl mt-5 py-2 rounded-lg mb-1 bg-gradient-to-r from-transparent via-sky-600 to-transparent">{movieLogo}</div>
         </div>
-        <p className="text-xl w-[70%] py-4 hidden md:block">{overview || "No description available!"}</p>
+        <p className="text-xl w-[40%] py-4 hidden md:block">{overview || "No description available!"}</p>
         <div className="mt-4 md:mt-12 lg:mt-6 flex">
           {movieData ? (
             <span className="flex text-sm md:text-lg">
