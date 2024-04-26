@@ -5,12 +5,7 @@ import GptMovieSuggestions from "../components/GptMovieSuggestions";
 import Footer from "../common/Footer";
 const SearchPage = () => {
   return (
-    <div
-      className="text-white h-screen flex flex-col justify-between min-h-[100vh]"
-      style={{
-        background: `linear-gradient(rgba(0, 0, 0, 0.7 ),
-        rgba(0, 0, 0, 0.7 )),url(${gptBanner}) no-repeat center center/cover`,
-      }}>
+    <div className="text-white h-screen flex flex-col justify-between bg-slate-900 overflow-auto">
       <GptSearchBar />
       <GptMovieSuggestions />
       <div className="mt-44">
