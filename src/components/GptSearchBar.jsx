@@ -4,8 +4,11 @@ import { Input } from "@/components/ui/input";
 import React from "react";
 import OpenAI from "openai";
 import { API_OPTIONS, DUMMY_GPT_RESULTS, TMDB_MOVIE_SEARCH, gptQuery } from "../utils/constants";
+import { useDispatch } from "react-redux";
+import { addGptMovieResult } from "../utils/gptSlice";
 
 const GptSearchBar = () => {
+  const dispatch = useDispatch();
   const [searchQuery, setSearchQuery] = useState("");
   const openai = new OpenAI({
     apiKey: import.meta.env.VITE_OPENAI_KEY,
@@ -32,7 +35,12 @@ const GptSearchBar = () => {
 
       const movieDataPromises = recommendedMovies?.map((movie) => searchMovieTMDB(movie));
       const tmdbResults = await Promise.all(movieDataPromises);
-      console.log(tmdbResults);
+      dispatch(
+        addGptMovieResult({
+          movieNames: recommendedMovies,
+          movieResults: tmdbResults,
+        })
+      );
     } catch (error) {
       console.error("openai error", error);
     }
