@@ -52,3 +52,8 @@ export const TMDB_MOVIE_TOP_RATED = "top_rated?page=1";
 export const TMDB_MOVIE_UPCOMING = "upcoming?page=1";
 export const TMDB_MOVIE_HORROR = "&with_genres=27";
 export const TMDB_DISCOVER_URL = "https://api.themoviedb.org/3/discover/movie?";
+export const gptQuery =
+  "Act as a Movie Recommendation system and suggest some movies for the given query. only give me names of 5 movies, comma seperated like the example result given ahead. Example Result: Movie1, Movie2, Movie3, Movie4, Movie5  Query: ";
+export const DUMMY_GPT_RESULTS = "Raaz, Bhool Bhulaiyaa, 1920, Pari, Stree";
+export const TMDB_MOVIE_SEARCH = (movieName) =>
+  `https://api.themoviedb.org/3/search/movie?query=${movieName}&include_adult=false&language=en-US&page=1`;
