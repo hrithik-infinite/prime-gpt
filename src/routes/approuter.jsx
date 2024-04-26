@@ -8,6 +8,8 @@ const Login = lazy(() => import("../Pages/Login"));
 const LandingPage = lazy(() => import("../Pages/LandingPage"));
 const Browse = lazy(() => import("../Pages/Browse"));
 const MoviePlayer = lazy(() => import("../Pages/MoviePlayer"));
+const SearchPage = lazy(() => import("../Pages/SearchPage"));
+const PlayMovie = lazy(() => import("../Pages/PlayMovie"));
 export const approuter = createBrowserRouter([
   {
     path: "login",
@@ -44,6 +46,22 @@ export const approuter = createBrowserRouter([
         element: (
           <Suspense fallback={<Shimmer />}>
             <MoviePlayer />
+          </Suspense>
+        ),
+      },
+      {
+        path: "play/:id",
+        element: (
+          <Suspense fallback={<Shimmer />}>
+            <PlayMovie />
+          </Suspense>
+        ),
+      },
+      {
+        path: "search",
+        element: (
+          <Suspense fallback={<Shimmer />}>
+            <SearchPage />
           </Suspense>
         ),
       },
