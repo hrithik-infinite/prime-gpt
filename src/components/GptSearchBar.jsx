@@ -24,14 +24,14 @@ const GptSearchBar = () => {
   };
   const handleSearch = async () => {
     try {
-      const gptResults = DUMMY_GPT_RESULTS;
-      const recommendedMovies = gptResults?.split(",");
+    //   const gptResults = DUMMY_GPT_RESULTS;
+    //   const recommendedMovies = gptResults?.split(",");
 
-      //   const gptResults = await openai.chat.completions.create({
-      //     messages: [{ role: "user", content: gptQuery + searchQuery }],
-      //     model: "gpt-3.5-turbo",
-      //   });
-      //   const recommendedMovies = gptResults?.choices?.[0]?.message?.content?.split(",");
+        const gptResults = await openai.chat.completions.create({
+          messages: [{ role: "user", content: gptQuery + searchQuery }],
+          model: "gpt-3.5-turbo",
+        });
+        const recommendedMovies = gptResults?.choices?.[0]?.message?.content?.split(",");
 
       const movieDataPromises = recommendedMovies?.map((movie) => searchMovieTMDB(movie));
       const tmdbResults = await Promise.all(movieDataPromises);
